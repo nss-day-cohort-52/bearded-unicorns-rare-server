@@ -1,8 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-
-from models.user import create_user, login_user 
-from views.user_request import get_all_users
+from views.user_request import get_all_users, create_user, login_user
 
 
 
