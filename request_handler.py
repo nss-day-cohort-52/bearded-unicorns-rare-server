@@ -1,13 +1,9 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-<<<<<<< HEAD
-from views.user import create_user, login_user
-from views import get_all_posts, get_single_post   
-=======
+from views.post_request import get_all_posts, get_single_post   
 from views.user_request import get_all_users, create_user, login_user
 
 
->>>>>>> main
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
