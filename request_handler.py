@@ -2,8 +2,6 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.user_request import get_all_users, create_user, login_user
 
-
-
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
 
