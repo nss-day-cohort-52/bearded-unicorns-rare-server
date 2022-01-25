@@ -1,8 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-
 from views.user import create_user, login_user
-
+from views import get_all_posts, get_single_post   
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -50,9 +49,27 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        """Handle Get requests to the server"""
-        pass
+        """Handles GET requests to the server
+        """
+        # Set the response code to 'Ok'
+        self._set_headers(200)
+        response = {}  # Default response
 
+       # Parse URL and store entire tuple in a variable
+        parsed = self.parse_url()
+
+        # Response from parse_url() is a tuple with 2
+        # items in it, which means the request was for
+        # `/animals` or `/animals/2`
+        if len(parsed) == 2:
+            ( resource, id ) = parsed
+
+            if resource == "posts":
+                if id is not None:
+                    response = f"{get_single_post(id)}"
+                else:
+                    response = f"{get_all_posts()}"        
+            self.wfile.write(response.encode())
 
     def do_POST(self):
         """Make a post request to the server"""
