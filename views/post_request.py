@@ -1,6 +1,6 @@
 import sqlite3
 import json
-from models import Post
+from models import Post, User, Category
 
 
 def get_all_posts():
@@ -21,8 +21,17 @@ def get_all_posts():
             p.publication_date,
             p.image_url,
             p.content,
-            p.approved
+            p.approved,
+            u.id user_id,
+            u.first_name user_first_name,
+            u.last_name user_last_name,
+            c.id category_id,
+            c.label category_label
         FROM Posts p
+        JOIN Users u
+            ON u.id = p.user_id
+        JOIN Categories c
+            ON c.id = p.category_id
         """)
 
         # Initialize an empty list to hold all post representations
@@ -41,6 +50,11 @@ def get_all_posts():
             post = Post(row['id'], row['user_id'], row['category_id'],
                         row['title'], row['publication_date'], row['image_url'],
                         row['content'], row['approved'])
+            user = User(row['user_id'], row['user_first_name'], row['user_last_name'], "", "", "", "", "", "", "")
+            category = Category(row['category_id'], row['category_label'])
+            
+            post.user = user.__dict__
+            post.category = category.__dict__
             posts.append(post.__dict__)
 
     # Use `json` package to properly serialize list as JSON
