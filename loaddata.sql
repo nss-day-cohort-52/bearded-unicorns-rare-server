@@ -95,3 +95,4 @@ DELETE FROM POSTS
 WHERE id BETWEEN 245 and 276;
 
 Select * from posts;
+INSERT INTO `Users` VALUES (null, "Andy", "Eilers", "andy@email.com", "Grumpy Old Man", "Bearded Wonder", "Bearded", "https://res.cloudinary.com/dlanffhtr/image/upload/v1641314191/Screen_Shot_2022-01-04_at_10.35.55_AM_gypbud.png", "Wed Sep 25 2021 10:11:33", true);

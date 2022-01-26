@@ -1,9 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.post_request import get_all_posts, get_single_post, delete_posts   
-from views.user_request import get_all_users, create_user, login_user
-
-
+from views.user_request import get_all_users, create_user, login_user, get_single_user
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -70,7 +68,14 @@ class HandleRequests(BaseHTTPRequestHandler):
                 if id is not None:
                     response = f"{get_single_post(id)}"
                 else:
-                    response = f"{get_all_posts()}"        
+                    response = f"{get_all_posts()}"
+                    
+            elif resource == "users":
+                if id is not None:
+                    response = f"{get_single_user(id)}"
+                else:
+                    response = f"{get_all_users()}"
+                           
             self.wfile.write(response.encode())
 
     def do_POST(self):

@@ -73,22 +73,22 @@ def create_user(user):
         
 def get_all_users():
     with sqlite3.connect("./db.sqlite3") as conn:
-        conn.roy_factory = sqlite3.Row
+        conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
         
         db_cursor.execute("""
         SELECT
-            u.id.
+            u.id,
             u.first_name,
             u.last_name,
             u.email,
             u.bio,
             u.username,
-            u.password
+            u.password,
             u.profile_image_url,
             u.created_on,
             u.active
-        FROM User u               
+        FROM Users u               
         """)
         
         users = []
@@ -102,3 +102,30 @@ def get_all_users():
             users.append(user.__dict__)
 
     return json.dumps(users)
+
+def get_single_user(id):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+        
+        db_cursor.execute("""
+        SELECT
+            u.id,
+            u.first_name,
+            u.last_name,
+            u.email,
+            u.bio,
+            u.username,
+            u.password,
+            u.profile_image_url,
+            u.created_on,
+            u.active
+        FROM users u
+        WHERE u.id = ?
+        """, ( id, ))
+        
+        data = db_cursor.fetchone()
+        
+        user = User(data['id'], data['first_name'], data['last_name'], data['email'], data['bio'], data['username'], data['password'], data['profile_image_url'], data['created_on'], data['active'])
+        
+        return json.dumps(user.__dict__)
