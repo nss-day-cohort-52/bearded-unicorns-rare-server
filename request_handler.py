@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views.post_request import get_all_posts, get_single_post   
+from views.post_request import get_all_posts, get_single_post, delete_posts   
 from views.user_request import get_all_users, create_user, login_user
 
 
@@ -94,8 +94,14 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_DELETE(self):
         """Handle DELETE Requests"""
-        pass
+        self._set_headers(204)
+        
+        (resource, id) = self.parse_url()
 
+        if resource == "posts":
+            delete_posts(id)
+            
+        self.wfile.write("".encode())
 
 def main():
     """Starts the server on port 8088 using the HandleRequests class
