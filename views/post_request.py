@@ -2,6 +2,7 @@ import sqlite3
 import json
 from models import Post
 
+
 def get_all_posts():
     # Open a connection to the database
     with sqlite3.connect("./db.sqlite3") as conn:
@@ -38,12 +39,13 @@ def get_all_posts():
             # exact order of the parameters defined in the
             # Post class above.
             post = Post(row['id'], row['user_id'], row['category_id'],
-                            row['title'], row['publication_date'], row['image_url'],
-                            row['content'], row['approved'])
+                        row['title'], row['publication_date'], row['image_url'],
+                        row['content'], row['approved'])
             posts.append(post.__dict__)
 
     # Use `json` package to properly serialize list as JSON
     return json.dumps(posts)
+
 
 def get_single_post(id):
     with sqlite3.connect("./db.sqlite3") as conn:
@@ -64,14 +66,23 @@ def get_single_post(id):
             p.approved
         FROM Posts p
         WHERE p.id = ?
-        """, ( id, ))
+        """, (id, ))
 
         # Load the single result into memory
         data = db_cursor.fetchone()
 
         # Create an post instance from the current data
         post = Post(data['id'], data['user_id'], data['category_id'],
-                            data['title'], data['publication_date'], data['image_url'],
-                            data['content'], data['approved'])
-        
+                    data['title'], data['publication_date'], data['image_url'],
+                    data['content'], data['approved'])
+
         return json.dumps(post.__dict__)
+
+def delete_posts(id):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM POSTS
+        WHERE id = ?
+        """, (id, ))
