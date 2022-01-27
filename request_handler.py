@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.post_request import get_all_posts, get_single_post, delete_posts   
 from views.user_request import get_all_users, create_user, login_user, get_single_user
+from views.category_request import get_all_categories, get_single_category
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -75,6 +76,11 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_user(id)}"
                 else:
                     response = f"{get_all_users()}"
+            elif resource == "categories":
+                if id is not None:
+                    response = f"{get_single_category(id)}"
+                else:
+                    response = f"{get_all_categories()}"
                            
             self.wfile.write(response.encode())
 
