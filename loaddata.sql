@@ -96,3 +96,21 @@ WHERE id BETWEEN 245 and 276;
 
 Select * from posts;
 INSERT INTO `Users` VALUES (null, "Andy", "Eilers", "andy@email.com", "Grumpy Old Man", "Bearded Wonder", "Bearded", "https://res.cloudinary.com/dlanffhtr/image/upload/v1641314191/Screen_Shot_2022-01-04_at_10.35.55_AM_gypbud.png", "Wed Sep 25 2021 10:11:33", true);
+
+SELECT
+  p.id,
+  p.user_id,
+  p.category_id,
+  p.title,
+  p.publication_date,
+  p.image_url,
+  p.content,
+  p.approved,
+  u.first_name user_first_name,
+  u.last_name user_last_name,
+  c.label category_label
+FROM Posts p
+JOIN Users u
+  ON u.id = p.user_id
+JOIN Categories c
+  ON c.id = p.category_id
