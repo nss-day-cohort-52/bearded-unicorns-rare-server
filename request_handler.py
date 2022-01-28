@@ -1,6 +1,9 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+
 from views.post_request import get_all_posts, get_single_post, delete_posts, update_post   
+from views.tag_request import get_all_tags, get_single_tag   
+
 from views.user_request import get_all_users, create_user, login_user, get_single_user
 from views.category_request import get_all_categories, get_single_category
 
@@ -81,6 +84,11 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
+            elif resource == "tags":
+                if id is not None:
+                    response = f"{get_single_tag(id)}"
+                else:
+                    response = f"{get_all_tags()}"
                            
             self.wfile.write(response.encode())
 
