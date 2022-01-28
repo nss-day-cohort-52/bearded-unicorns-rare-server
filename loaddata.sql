@@ -124,5 +124,7 @@ JOIN Categories c
   ON c.id = p.category_id
 ORDER BY publication_date DESC
 
-UPDATE users SET bio = 'Gundam Pilot'
-WHERE id = 1;
+UPDATE Posts
+  SET
+    content = 'Unicorns are amazing! They are definitely real! And they are absolutely majestic!'
+  WHERE id = 302
