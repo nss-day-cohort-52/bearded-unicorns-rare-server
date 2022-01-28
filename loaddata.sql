@@ -121,3 +121,9 @@ JOIN Users u
 JOIN Categories c
   ON c.id = p.category_id
 ORDER BY publication_date DESC
+
+SELECT
+    c.id,
+    c.label 
+FROM Categories c
+ORDER BY label
