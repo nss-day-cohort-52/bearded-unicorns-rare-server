@@ -95,7 +95,7 @@ INSERT INTO `Categories` VALUES (null, "Entertainment");
 INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 15 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are amazing! They are definitely real!", 1);
 INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 25 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
 INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 10 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
-INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Aug 25 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
+INSERT INTO `Posts` VALUES (null, 2, 2, "Black Unicorn", "Wed May 25 2021 10:11:33", "https://m.media-amazon.com/images/I/71j7ymp1flL._AC_SL1500_.jpg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
 
 DELETE FROM POSTS
 WHERE id BETWEEN 245 and 276;
@@ -126,4 +126,10 @@ SELECT
     c.id,
     c.label 
 FROM Categories c
+ORDER BY label
+
+SELECT
+    t.id,
+    t.label 
+FROM Tags t
 ORDER BY label
