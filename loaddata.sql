@@ -127,3 +127,9 @@ SELECT
     c.label 
 FROM Categories c
 ORDER BY label
+
+SELECT
+    t.id,
+    t.label 
+FROM Tags t
+ORDER BY label

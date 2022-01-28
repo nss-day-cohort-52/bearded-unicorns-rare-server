@@ -17,6 +17,7 @@ def get_all_tags():
             t.id,
             t.label 
         FROM Tags t
+        ORDER BY label
         """)
 
         # Initialize an empty list to hold all post representations
