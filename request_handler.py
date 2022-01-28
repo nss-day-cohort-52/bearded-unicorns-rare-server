@@ -1,14 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-<<<<<<< HEAD
 from views.post_request import get_all_posts, get_single_post, delete_posts, update_post
 from views.tag_request import get_all_tags, get_single_tag   
-=======
-
-from views.post_request import get_all_posts, get_single_post, delete_posts, update_post   
-from views.tag_request import get_all_tags, get_single_tag   
-
->>>>>>> 66fd8345790f8af76a5d5fac91eef979e7b9cbc3
 from views.user_request import get_all_users, create_user, login_user, get_single_user
 from views.category_request import get_all_categories, get_single_category
 
