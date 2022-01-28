@@ -128,3 +128,10 @@ UPDATE Posts
   SET
     content = 'Unicorns are amazing! They are definitely real! And they are absolutely majestic!'
   WHERE id = 302
+
+SELECT
+    c.id,
+    c.label 
+FROM Categories c
+ORDER BY label
+
