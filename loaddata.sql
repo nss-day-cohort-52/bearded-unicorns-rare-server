@@ -94,6 +94,7 @@ INSERT INTO `Categories` VALUES (null, "Entertainment");
 
 INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 15 2021 10:11:33", "https://m.media-amazon.com/images/I/71j7ymp1flL._AC_SL1500_.jpg", "Unicorns are amazing! They are definitely real!", 1);
 INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 25 2021 10:11:33", "http://cdn.shopify.com/s/files/1/0078/8575/0369/products/Black_Unicorn.jpg?v=1571713771", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
+INSERT INTO `Posts` VALUES (null, 2, 2, "Black Unicorn", "Wed May 25 2021 10:11:33", "https://m.media-amazon.com/images/I/71j7ymp1flL._AC_SL1500_.jpg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
 
 
 DELETE FROM POSTS
@@ -124,7 +125,21 @@ JOIN Categories c
   ON c.id = p.category_id
 ORDER BY publication_date DESC
 
+<<<<<<< HEAD
 UPDATE Posts
   SET
     content = 'Unicorns are amazing! They are definitely real! And they are absolutely majestic!'
   WHERE id = 302
+=======
+SELECT
+    c.id,
+    c.label 
+FROM Categories c
+ORDER BY label
+
+SELECT
+    t.id,
+    t.label 
+FROM Tags t
+ORDER BY label
+>>>>>>> 487aea9fc109e9c766b93cec1421611f0eb6531f
