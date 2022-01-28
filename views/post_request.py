@@ -2,6 +2,27 @@ import sqlite3
 import json
 from models import Post, User, Category
 
+def update_post(id, new_post):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        UPDATE Posts
+            SET
+                content = ?,
+        WHERE id = ?
+        """, (new_post['content'], id, ))
+
+        # Were any rows affected?
+        # Did the client send an `id` that exists?
+        rows_affected = db_cursor.rowcount
+
+    if rows_affected == 0:
+        # Forces 404 response by main module
+        return False
+    else:
+        # Forces 204 response by main module
+        return True
 
 def get_all_posts():
     # Open a connection to the database
@@ -60,7 +81,6 @@ def get_all_posts():
 
     # Use `json` package to properly serialize list as JSON
     return json.dumps(posts)
-
 
 def get_single_post(id):
     with sqlite3.connect("./db.sqlite3") as conn:

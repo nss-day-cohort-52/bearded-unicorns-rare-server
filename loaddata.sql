@@ -92,16 +92,19 @@ INSERT INTO `Categories` VALUES (null, "Gaming");
 INSERT INTO `Categories` VALUES (null, "Entertainment");
 
 
-INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 15 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are amazing! They are definitely real!", 1);
-INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 25 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
-INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 10 2021 10:11:33", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71j7ymp1flL._AC_SL1500_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com%2FStokes-Design-Unicorn-Mythical-Fantasy%2Fdp%2FB00R9GAYR2&tbnid=QIkM9yv7gXzn-M&vet=12ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg..i&docid=tRvpST1XCJlonM&w=1186&h=1500&q=black%20unicorn&ved=2ahUKEwj0kNq_ts31AhWBl1MKHRaHDAkQMygAegUIARCzAg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
+INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 15 2021 10:11:33", "https://m.media-amazon.com/images/I/71j7ymp1flL._AC_SL1500_.jpg", "Unicorns are amazing! They are definitely real!", 1);
+INSERT INTO `Posts` VALUES (null, 1, 1, "Unicorn", "Wed Sep 25 2021 10:11:33", "http://cdn.shopify.com/s/files/1/0078/8575/0369/products/Black_Unicorn.jpg?v=1571713771", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
 INSERT INTO `Posts` VALUES (null, 2, 2, "Black Unicorn", "Wed May 25 2021 10:11:33", "https://m.media-amazon.com/images/I/71j7ymp1flL._AC_SL1500_.jpg", "Unicorns are still amazing! They are definitely real! I can't wait to find one and befriend it! ", 1);
+
 
 DELETE FROM POSTS
 WHERE id BETWEEN 245 and 276;
 
 Select * from posts;
 INSERT INTO `Users` VALUES (null, "Andy", "Eilers", "andy@email.com", "Grumpy Old Man", "Bearded Wonder", "Bearded", "https://res.cloudinary.com/dlanffhtr/image/upload/v1641314191/Screen_Shot_2022-01-04_at_10.35.55_AM_gypbud.png", "Wed Sep 25 2021 10:11:33", true);
+
+Select * from posts;
+INSERT INTO `Users` VALUES (null, "Duo", "Maxwell", "DeathscytheGundam@gundam.net", "Gundam Pilot", "Gundam_Deathscythe", "DMaxwell", "https://cdn.myanimelist.net/images/characters/13/40366.jpg", "2022-01-25 10:14:25.500194", true);
 
 SELECT
   p.id,
@@ -122,6 +125,12 @@ JOIN Categories c
   ON c.id = p.category_id
 ORDER BY publication_date DESC
 
+
+UPDATE Posts
+  SET
+    content = 'Unicorns are amazing! They are definitely real! And they are absolutely majestic!'
+  WHERE id = 302
+
 SELECT
     c.id,
     c.label 
@@ -133,3 +142,4 @@ SELECT
     t.label 
 FROM Tags t
 ORDER BY label
+
